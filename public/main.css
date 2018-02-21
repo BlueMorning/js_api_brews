@@ -14,6 +14,19 @@ html {
     overflow-x: hidden;
 }
 
+/*** ***/
+.main-container {
+  margin: 20px;
+}
+
+.search-bar {
+  margin: 50px 20px 10px 20px;
+}
+
+.label-search-by-name,
+.main-span-results {
+  margin-left: 20px;
+}
 
 /*** Flex box ***/
 
@@ -46,17 +59,46 @@ html {
   font-weight: 300;
   color: #3498db;
   font-size: 100%;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .brew-tagline {
   font-weight: 300;
   color: #3498db;
   font-size: 90%;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .brew-description {
   font-weight: 200;
   font-size: 80%;
+  margin-bottom: 10px;
+}
+
+.brew-food {
+  font-weight: 200;
+  font-size: 70%;
+}
+
+
+/*** Results counter ***/
+.span-results {
+  margin-left: 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 20px;
+}
+
+/*** Button ***/
+.button-load-brews {
+    display: inline-block; /* inline block can have a width and a height */
+    padding: 10px 20px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    margin-right: 20px;
 }

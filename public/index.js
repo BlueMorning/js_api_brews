@@ -56,7 +56,11 @@ const removeAllChildNodes = function(parent) {
 
 const initializePage = function(){
   initializeElements();
-  addListener(button_load_brews, "click", requestLoadAllBrews);
+  addListener(button_load_brews,    "click", requestLoadAllBrews);
+  addListener(input_search_by_name, "keyup", filterBrews);
+  addListener(input_search_by_food, "keyup", filterBrews);
+
+  populateData();
 }
 
 
@@ -92,11 +96,14 @@ const populateData = function(){
   brewsFiltered.forEach(function(brew){
     div_brews.innerHTML += createBrewDiv(brew);
   });
+
+  span_results.innerText = brewsFiltered.length;
+
 }
 
 
 const createBrewDiv = function(brew){
-  const html =
+  let html =
   `<div class='div-brew'>
     <div>
       <img src='${brew.image_url}' class='brew-image' />
@@ -105,12 +112,41 @@ const createBrewDiv = function(brew){
       <h1 class="brew-name">${brew.name}</h1>
       <p class="brew-tagline">${brew.tagline}</p>
       <p class="brew-description">${brew.description.substring(0, 200)}...</p>
-    </div>
-  </div>`;
+      <p><ul>`;
+      brew.food_pairing.forEach(function(food){
+          html += `<li class="brew-food">${food}</li>`;
+        });
+        html +=
+      `</ul></p>
+     </div>
+    </div>`;
+
   return html;
 }
 
+/*** Filter brews ***/
+const filterBrews = function(){
 
+  const brewName        = input_search_by_name.value;
+  const brewPairingFood = input_search_by_food.value;
+  brewsFiltered         = brews;
+
+  if(brewName != ""){
+    brewsFiltered = brews.filter(function(brew){
+      return brew.name.toLowerCase().startsWith(brewName.toLowerCase());
+    })
+  }
+
+  if(brewPairingFood != ""){
+    brewsFiltered = brews.filter(function(brew){
+      return brew.food_pairing.find(function(food){
+        return food.toLowerCase().includes(brewPairingFood.toLowerCase());
+      })
+    })
+  }
+
+  populateData();
+}
 
 
 

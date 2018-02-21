@@ -11,16 +11,14 @@
     <script src='index.js'></script>
   </head>
   <body>
-    <div>
-      <div>
-        <button id="button-load-brews">I'M THIRSTY</button>
-      </div>
-      <div>
+    <div class="main-container">
+      <div class="search-bar">
+        <button id="button-load-brews" class="button-load-brews">I'M THIRSTY</button>
         <label for='input-search-by-name'>Search by name</label>
         <input type='text' id='input-search-by-name'/>
-        <label for='input-search-by-name'>by food pairing</label>
+        <label for='input-search-by-name' class='label-search-by-name'>by food pairing</label>
         <input type='text' id='input-search-by-food'/>
-        <span>Results :<span id='span-results'></span></span>
+        <span class="main-span-results">Results :<span id='span-results' class="span-results"></span></span>
       </div>
       <div>
         <div id="div-brews" class="flex-box-row-wrap">
